@@ -42,8 +42,8 @@ class AnnoExtension extends \Twig_Extension
     public function getFilters()
     {
         return array(
-             'DateToAnno' => new \Twig_Filter_Method($this, 'DateToAnnoFilter'),
-             'AnnoToDate' => new \Twig_Filter_Method($this, 'AnnoToDateFilter'),
+             'DateToAnno' => new \Twig_Filter_Method($this, 'dateToAnnoFilter'),
+             'AnnoToDate' => new \Twig_Filter_Method($this, 'annoToDateFilter'),
         );
     }
 
@@ -57,14 +57,19 @@ class AnnoExtension extends \Twig_Extension
      *
      * @return string
      */
-    public function DateToAnnoFilter($arabic, $upcase = true)
+    public function dateToAnnoFilter($arabic, $upcase = true)
     {
         $c = 'IVXLCDM';
 
-        for($a = 5, $b = $s =''; $arabic; $b++, $a^=7)
-            for($o = $arabic % $a, $arabic = $arabic / $a^0; $o--; $s = $c[$o > 2 ? $b + $arabic - ($arabic &= -2) + $o = 1:$b].$s);
+        for ($a = 5, $b = $s =''; $arabic; $b++, $a^=7) {
+            for ($o = $arabic % $a, $arabic = $arabic / $a^0; $o--; $s = $c[$o > 2 ? $b + $arabic - ($arabic &= -2) +
+                 $o = 1:$b].$s) {
 
-        if(false == $upcase) $s = strtolower($s);
+            }
+        }
+        if (false == $upcase) {
+            $s = strtolower($s);
+        }
 
         return $s;
     }
@@ -76,7 +81,7 @@ class AnnoExtension extends \Twig_Extension
      *
      * @return int
      */
-    public function AnnoToDateFilter($roman)
+    public function annoToDateFilter($roman)
     {
         $result = 0;
 

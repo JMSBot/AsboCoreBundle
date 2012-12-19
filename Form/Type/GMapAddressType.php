@@ -30,28 +30,15 @@ class GMapAddressType extends AbstractType
     {
         $show = 'hidden';
 
-        if(true === $options['show_all']) $show = null;
+        if (true === $options['show_all']) {
+            $show = null;
+        }
 
-        $builder->add('address', null, array(
-                    'required'      => true
-                ))
-                ->add('locality', $show, array(
-                    'required'      => false,
-                    'disabled'       => true
-                ))
-                ->add('country', $show, array(
-                    'required'      => false,
-                    'disabled'       => true
-                ))
-                ->add('lat', $show, array(
-                    'required'      => false,
-                    'disabled'       => true
-                ))
-                ->add('lng', $show, array(
-                    'required'      => false,
-                    'disabled'       => true
-                ))
-        ;
+        $builder->add('address', null, array('required' => true))
+                ->add('locality', $show, array('required' => false, 'disabled' => true))
+                ->add('country', $show, array('required' => false, 'disabled' => true))
+                ->add('lat', $show, array('required' => false, 'disabled' => true))
+                ->add('lng', $show, array('required' => false, 'disabled' => true));
     }
 
     /**
