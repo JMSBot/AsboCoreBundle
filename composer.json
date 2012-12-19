@@ -10,6 +10,7 @@
             "Asbo\\CoreBundle": ""
         }
     },
+    "license": "MIT",
     "description": "Symfony ASBO Core Bundle",
     "homepage": "http://github.com/Malian/CoreBundle",
     "minimum-stability": "dev",
