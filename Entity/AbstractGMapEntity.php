@@ -1,12 +1,22 @@
 <?php
+
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Asbo\CoreBundle\Entity\AbstractGMapEntity
+ * Represent an abstract Gmap Entity
  *
- * @author De Ron Malian
+ * @author De Ron Malian <deronmalian@gmail.com>
  *
  * @ORM\MappedSuperclass
  */
@@ -34,54 +44,94 @@ abstract class AbstractGMapEntity
     protected $country;
 
     /**
-     * @var float     Latitude of the position
+     * @var float Latitude of the position
      *
      * @ORM\Column(name="lat", type="float", nullable=true)
      */
     protected $lat;
 
     /**
-     * @var float     Longitude of the position
+     * @var float Longitude of the position
      *
      * @ORM\Column(name="lng", type="float", nullable=true)
      */
     protected $lng;
 
+    /**
+     * Sets the address
+     *
+     * @param string $address
+     */
     public function setAddress($address)
     {
         $this->address = $address;
     }
 
+    /**
+     * Returns the address
+     *
+     * @return string
+     */
     public function getAddress()
     {
         return $this->address;
     }
 
+    /**
+     * Sets the locality
+     *
+     * @param string $locality
+     */
     public function setLocality($locality)
     {
         $this->locality = $locality;
     }
 
+    /**
+     * Returns the locality
+     *
+     * @return string
+     */
     public function getLocality()
     {
         return $this->locality;
     }
 
+    /**
+     * Sets the country
+     *
+     * @param string $country
+     */
     public function setCountry($country)
     {
         $this->country = $country;
     }
 
+    /**
+     * Returns the country
+     *
+     * @return string
+     */
     public function getCountry()
     {
         return $this->country;
     }
 
+    /**
+     * Returns the latitude
+     *
+     * @return float
+     */
     public function getLat()
     {
         return $this->lat;
     }
 
+    /**
+     * Sets the latitude
+     *
+     * @param string|float $lat
+     */
     public function setLat($lat)
     {
         if (is_string($lat)) {
@@ -90,11 +140,21 @@ abstract class AbstractGMapEntity
         $this->lat = $lat;
     }
 
+    /**
+     * Returns the longitude
+     *
+     * @return float
+     */
     public function getLng()
     {
         return $this->lng;
     }
 
+    /**
+     * Sets the longitude
+     *
+     * @param string|float $lng
+     */
     public function setLng($lng)
     {
         if (is_string($lng)) {

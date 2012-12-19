@@ -1,4 +1,14 @@
 <?php
+
+/*
+ * This file is part of the ASBO package.
+ *
+ * (c) De Ron Malian <deronmalian@gmail.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Asbo\CoreBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
@@ -9,19 +19,22 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
 
 /**
- * GMapAddressType
+ * A GMap address type.
  *
- * @author Sullivan SENECHAL
+ * @author De Ron Malian <deronmalian@gmail.com>
  */
 class GMapAddressType extends AbstractType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $show = 'hidden';
+
         if(true === $options['show_all']) $show = null;
 
-        $builder
-                ->add('address', null, array(
+        $builder->add('address', null, array(
                     'required'      => true
                 ))
                 ->add('locality', $show, array(
@@ -43,11 +56,17 @@ class GMapAddressType extends AbstractType
         ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $view->vars['show_all'] = $options['show_all'];
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getDefaultOptions(array $options)
     {
         return array(
@@ -56,6 +75,9 @@ class GMapAddressType extends AbstractType
         );
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function getName()
     {
         return 'gmap_address';
