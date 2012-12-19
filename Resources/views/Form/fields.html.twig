@@ -1,0 +1,25 @@
+{% block gmap_address_widget %}</pre>
+    <div id="{{ id }}_gmap_address_widget">
+    <div id="{{ id }}_input">{{ block('form_widget') }}</div>
+    <div id="{{ id }}_map" class="gmap_address_map" style="border: 1px solid #DDD; width:300px; height: 300px; -webkit-box-shadow: #AAA 0px 0px 15px; float:right; clear:left"></div>
+    </div>
+
+    <script type="text/javascript">
+
+    $(function() {
+                var addresspickerMap = $("#{{ form.address.get("id") }}").addresspicker({
+                    regionBias: "be",
+                    elements: {
+                        map: "#{{ id }}_map",
+                        locality: '#{{ form.locality.get("id") }}',
+                        country:  '#{{ form.country.get("id") }}',
+                        lat:      "#{{ form.lat.get("id") }}",
+                        lng:      "#{{ form.lng.get("id") }}"
+                    }
+                });
+                var gmarker = addresspickerMap.addresspicker("marker");
+                gmarker.setVisible(true);
+                addresspickerMap.addresspicker("updatePosition");
+        });
+    </script>
+{% endblock %}
