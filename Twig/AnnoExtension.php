@@ -51,7 +51,7 @@ class AnnoExtension extends \Twig_Extension
      * Transform date to Anno
      *
      * @param int|string $arabic Arabic date
-     * @param boolean $upcase If false, return the ouput lowercase
+     * @param boolean    $upcase If false, return the ouput lowercase
      *
      * @todo changer la fonction pour quelque chose de plus compréhensible
      *
@@ -80,10 +80,8 @@ class AnnoExtension extends \Twig_Extension
     {
         $result = 0;
 
-        foreach ($this->romans as $key => $value)
-        {
-            while (strpos($roman, $key) === 0)
-            {
+        foreach ($this->romans as $key => $value) {
+            while (strpos($roman, $key) === 0) {
                 $result += $value;
                 $roman = substr($roman, strlen($key));
             }

@@ -25,7 +25,7 @@ class GlobalVariablesCompilerPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container)
     {
         if (false === $container->hasDefinition('twig')) {
             return;

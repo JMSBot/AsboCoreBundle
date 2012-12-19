@@ -42,8 +42,7 @@ class GlobalVariables
     {
         if ($this->container->has('asbo.whoswho.twig.global')) {
             return $this->container->get('asbo.whoswho.twig.global');
-        }
-        else {
+        } else {
             throw new \Exception('Le bundle Who\'s Who ? ne semble pas être installé.');
         }
     }
