@@ -50,28 +50,29 @@ class AnnoExtension extends \Twig_Extension
     /**
      * Transform date to Anno
      *
-     * @param int|string $arabic Arabic date
-     * @param boolean    $upcase If false, return the ouput lowercase
-     *
-     * @todo changer la fonction pour quelque chose de plus compréhensible
+     * @param int|string $integer Arabic date
      *
      * @return string
      */
-    public function dateToAnnoFilter($arabic, $upcase = true)
+    public function dateToAnnoFilter($integer)
     {
-        $c = 'IVXLCDM';
+        $return = '';
 
-        for ($a = 5, $b = $s =''; $arabic; $b++, $a^=7) {
-            for ($o = $arabic % $a, $arabic = $arabic / $a^0; $o--; $s = $c[$o > 2 ? $b + $arabic - ($arabic &= -2) +
-                 $o = 1:$b].$s) {
+        if (0 == $integer) {
+            return $integer;
+        }
 
+        while ($integer > 0) {
+            foreach ($this->romans as $rom => $arb) {
+                if ($integer >= $arb) {
+                    $integer -= $arb;
+                    $return .= $rom;
+                    break;
+                }
             }
         }
-        if (false == $upcase) {
-            $s = strtolower($s);
-        }
 
-        return $s;
+        return $return;
     }
 
     /**
