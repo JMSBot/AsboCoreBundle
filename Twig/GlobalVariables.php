@@ -46,4 +46,9 @@ class GlobalVariables
             throw new \Exception('Le bundle Who\'s Who ? ne semble pas être installé.');
         }
     }
+
+    public function getUserForm()
+    {
+        return $this->container->get('fos_user.registration.form.factory')->createForm()->createView();
+    }
 }
