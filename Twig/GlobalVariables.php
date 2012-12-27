@@ -46,4 +46,18 @@ class GlobalVariables
             throw new \Exception('Le bundle Who\'s Who ? ne semble pas être installé.');
         }
     }
+
+    /**
+     * Return the global UserAsbo variable
+     *
+     * @return Asbo\WhosWhoBundle\Twig\GlobalVariables
+     */
+    public function getUser()
+    {
+        if ($this->container->has('asbo.user.twig.global')) {
+            return $this->container->get('asbo.user.twig.global');
+        } else {
+            throw new \Exception('Le bundle AsboUser ne semble pas être installé.');
+        }
+    }
 }
