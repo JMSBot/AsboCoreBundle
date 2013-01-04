@@ -58,7 +58,7 @@ class AnnoExtension extends \Twig_Extension
     {
         $return = '';
 
-        if (0 == $integer) {
+        if (0 === $integer || null === $integer) {
             return $integer;
         }
 
